@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>New gig</h1>
+  <p class="muted">Set the vibe and mode, then propose / vote / generate.</p>
+  <form method="post" action="/gig" class="stack">
+    <label>Gig name <input name="name" placeholder="Saturday wedding @ The Vine" required></label>
+
+    <label>Vibe
+      <select name="vibe">
+        {% for key, v in vibes.items() %}
+        <option value="{{ key }}" {% if key == 'wedding' %}selected{% endif %}>{{ v.name }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Mode
+      <select name="mode">
+        {% for key, label in modes %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+      </select>
+    </label>
+
+    <div class="row">
+      <label>Target # songs <input type="number" name="target_count" value="15" min="3" max="60"></label>
+      <label>or minutes <input type="number" name="target_minutes" placeholder="optional" min="10" max="300"></label>
+    </div>
+
+    <button class="primary" type="submit">Create gig →</button>
+  </form>
+</section>
+{% endblock %}

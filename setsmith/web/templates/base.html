@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}setsmith{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand">🎸 setsmith</a>
+    <span class="member-bar">
+      you: <b id="member-name">—</b>
+      <button class="link" onclick="changeMember()">change</button>
+    </span>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <script>
+    function ensureMember() {
+      let m = localStorage.getItem('setsmith_member');
+      if (!m) { m = (prompt('Your name (for proposing & voting):') || 'Anon').trim() || 'Anon';
+                localStorage.setItem('setsmith_member', m); }
+      document.getElementById('member-name').textContent = m;
+      return m;
+    }
+    function changeMember() {
+      const m = (prompt('Your name:', localStorage.getItem('setsmith_member') || '') || '').trim();
+      if (m) { localStorage.setItem('setsmith_member', m); document.getElementById('member-name').textContent = m; }
+    }
+    // attach the member name to every htmx request
+    document.body.addEventListener('htmx:configRequest', e => { e.detail.parameters['member'] = ensureMember(); });
+    ensureMember();
+  </script>
+</body>
+</html>

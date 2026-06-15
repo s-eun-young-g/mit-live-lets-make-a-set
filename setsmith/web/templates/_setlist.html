@@ -1,0 +1,16 @@
+<div class="setlist-head">
+  <h2>Set list <span class="muted">· {{ setlist|length }} songs · ~{{ total_minutes }} min</span></h2>
+  <a class="btn" href="/gig/{{ gig.id }}/print" target="_blank">🖨 Print</a>
+</div>
+<ol class="setlist">
+  {% for s in setlist %}
+  <li>
+    <span class="sec sec-{{ s.section }}">{{ s.section }}</span>
+    <span class="set-main"><b>{{ s.title }}</b> <span class="muted">— {{ s.artist }}</span>
+      {% if not s.is_suggestion %}<span class="tag member">{{ s.proposed_by or 'band' }}</span>
+      {% else %}<span class="tag sug">suggested</span>{% endif %}
+    </span>
+    <span class="why muted small">{{ s.reason }}</span>
+  </li>
+  {% endfor %}
+</ol>

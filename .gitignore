@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+
+# setsmith runtime
+*.sqlite
+*.sqlite3
+.cache/
+setsmith.db
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

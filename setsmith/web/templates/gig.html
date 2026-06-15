@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ gig.name }} — setsmith{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>{{ gig.name }}</h1>
+  <p class="muted">
+    Vibe <b>{{ vibes[gig.vibe].name if gig.vibe in vibes else gig.vibe }}</b> ·
+    Mode <b>{{ gig.mode }}</b> ·
+    Target {{ gig.target_minutes ~ ' min' if gig.target_minutes else gig.target_count ~ ' songs' }}
+  </p>
+  <p class="muted">Share this page's URL with the band (same wifi) so everyone can propose & vote.</p>
+</section>
+
+{% if gig.mode != 'brainstorm' %}
+<section class="card">
+  <h2>Propose songs</h2>
+  <input class="search" type="search" name="q" placeholder="Search a song…"
+         hx-get="/gig/{{ gig.id }}/search" hx-trigger="keyup changed delay:350ms"
+         hx-target="#results" autocomplete="off">
+  <div id="results"></div>
+</section>
+{% endif %}
+
+<section class="card">
+  <h2>Candidate songs</h2>
+  <div id="songlist">{% include "_songs.html" %}</div>
+</section>
+
+<section class="card">
+  <button class="primary" hx-post="/gig/{{ gig.id }}/generate" hx-target="#setlist"
+          hx-indicator="#gen-spin">Generate set list ✨</button>
+  <span id="gen-spin" class="htmx-indicator"> building…</span>
+  <div id="setlist">
+    {% if setlist %}{% include "_setlist.html" %}{% endif %}
+  </div>
+</section>
+{% endblock %}
