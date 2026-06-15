@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "setsmith"
 version = "0.1.0"
-description = "Band set-list generator — popularity, ease, vibe, and member votes into a sequenced set"
+description = "Band set-list generator, popularity, ease, vibe, and member votes into a sequenced set"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

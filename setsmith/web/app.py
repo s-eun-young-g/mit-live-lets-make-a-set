@@ -31,9 +31,9 @@ _client = Client(settings, Cache(settings.cache_path))
 deezer = Deezer(_client)
 lastfm = LastFM(_client, settings.lastfm_key)
 
-MODES = [("brainstorm", "Brainstorm — tool builds the set"),
-         ("ranker", "Ranker — only our proposed songs"),
-         ("mix", "Mix — our songs + suggestions")]
+MODES = [("brainstorm", "Brainstorm, tool builds the set"),
+         ("ranker", "Ranker, only our proposed songs"),
+         ("mix", "Mix, our songs + suggestions")]
 
 
 # --- helpers ----------------------------------------------------------------

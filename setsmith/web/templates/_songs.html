@@ -5,12 +5,12 @@
   {% for s in songs %}
   <li class="{{ 'vetoed' if s.vetoed }}">
     <span class="song-main">
-      <b>{{ s.title }}</b> <span class="muted">— {{ s.artist }}</span>
+      <b>{{ s.title }}</b> <span class="muted">{{ s.artist }}</span>
       {% if not s.is_suggestion %}<span class="tag member">{{ s.proposed_by or 'band' }}</span>{% endif %}
       {% if s.vetoed %}<span class="tag veto">vetoed</span>{% endif %}
     </span>
     <span class="vote-controls">
-      <span class="votes" title="upvotes">▲ {{ s.upvotes }}</span>
+      <span class="votes" title="upvotes">{{ s.upvotes }} up</span>
       <button class="vote" hx-post="/gig/{{ gig_id }}/vote" hx-target="#songlist"
               hx-vals='{"song_id": {{ s.db_id }}, "value": 1}'>upvote</button>
       <button class="vote veto-btn" hx-post="/gig/{{ gig_id }}/vote" hx-target="#songlist"

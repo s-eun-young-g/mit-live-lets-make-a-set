@@ -1,6 +1,6 @@
 """Sequence chosen songs into an energy arc (not just a ranked list).
 
-Target shape across the set: strong opener → build → peak (~2/3 in) → a breather →
+Target shape across the set: strong opener -> build -> peak (~2/3 in) -> a breather ->
 strong close. We greedily place songs whose energy best matches each slot's target,
 while avoiding back-to-back songs by the same artist.
 """

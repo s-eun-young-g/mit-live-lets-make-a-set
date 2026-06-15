@@ -1,4 +1,4 @@
-"""Deezer adapter — keyless discovery, popularity, duration, era.
+"""Deezer adapter, keyless discovery, popularity, duration, era.
 
 Deezer's public API needs no key. We use it for:
 - search (propose autocomplete + seed lookups)

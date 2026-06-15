@@ -44,7 +44,7 @@ def discover(deezer: Deezer, vibe: str, *, seed_artists: Optional[list[str]] = N
         matched += 1
         add(deezer.chart_tracks(gid, limit=per_genre), genre=name)
 
-    if matched == 0:                      # vibe genres not found → global chart
+    if matched == 0:                      # vibe genres not found -> global chart
         add(deezer.chart_tracks(0, limit=per_genre))
 
     for artist in (seed_artists or []):

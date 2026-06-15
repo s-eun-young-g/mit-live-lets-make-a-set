@@ -1,4 +1,4 @@
-"""Assemble a set list: weight by mode → score → select to length → sequence.
+"""Assemble a set list: weight by mode -> score -> select to length -> sequence.
 
 The caller composes the candidate ``pool`` per mode:
 - brainstorm: discovery songs only

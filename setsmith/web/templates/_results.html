@@ -2,13 +2,13 @@
 <ul class="results">
   {% for s in results %}
   <li>
-    <span>{{ s.title }} — <span class="muted">{{ s.artist }}</span></span>
+    <span>{{ s.title }} <span class="muted">{{ s.artist }}</span></span>
     <form hx-post="/gig/{{ gig_id }}/propose" hx-target="#songlist" hx-swap="innerHTML">
       <input type="hidden" name="title" value="{{ s.title }}">
       <input type="hidden" name="artist" value="{{ s.artist }}">
       <input type="hidden" name="source_id" value="{{ s.source_id or '' }}">
       <input type="hidden" name="duration" value="{{ s.duration_s or 0 }}">
-      <button class="add" title="Propose">＋</button>
+      <button class="add" title="Propose">Add</button>
     </form>
   </li>
   {% endfor %}
